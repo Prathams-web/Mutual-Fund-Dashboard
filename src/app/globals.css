@@ -1,26 +1,71 @@
 @import "tailwindcss";
+@import "../app/../styles/theme.css";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
+html,
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background-color: rgb(var(--color-base-secondary));
+  color: rgb(var(--color-title-h1));
+  font-family: var(--font-noto-sans), sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  min-width: 320px;
+}
+h1 {
+  font-size: clamp(1.5rem, 2vw, 2.25rem);
+  line-height: 2.75rem;
+  font-weight: 700;
+  color: rgb(var(--color-title-h1));
+  margin: 0;
+}
+h2 {
+  font-size: clamp(1.25rem, 1.5vw, 1.5rem);
+  line-height: 2.25rem;
+  font-weight: 600;
+  color: rgb(var(--color-title-h1));
+  margin: 0;
+}
+h3 {
+  font-size: clamp(1.125rem, 1.2vw, 1.25rem);
+  line-height: 2rem;
+  font-weight: 500;
+  color: rgb(var(--color-title-h2));
+  margin: 0;
+}
+p {
+  font-size: clamp(1rem, 1vw, 1.125rem);
+  line-height: 1.75rem;
+  font-weight: 400;
+  color: rgb(var(--color-title-h2));
+  margin: 0;
+}
+
+@layer components {
+  .card {
+    background-color: rgb(var(--color-base));
+    padding: 1rem;
+    border-radius: 0.5rem;
+    border: 1px solid rgb(var(--color-stroke));
+    box-shadow: 0 1px 2px rgb(0 0 0 / 0.05);
+  }
+
+  .sidebar {
+    width: 16rem;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    z-index: 10;
+    background-color: rgb(var(--color-base));
+    box-shadow: 0 4px 6px rgb(0 0 0 / 0.1);
+    transition: all 0.3s ease;
+  }
+
+  .main-content {
+    flex: 1;
+    max-width: calc(1440px - 256px);
+    margin-left: 16rem;
+    padding-left: 2rem;
+    padding-right: 2rem;
+    padding-top: 2rem;
+  }
 }
