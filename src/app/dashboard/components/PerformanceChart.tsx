@@ -44,7 +44,7 @@ const PerformanceChart = () => {
         </div>
         <div className="flex flex-col">
           <span className="text-caption text-text-secondary dark:text-text-secondary mb-1">
-            Today's Gain / Loss
+            Today&apos;s Gain / Loss
           </span>
           <span
             className={`text-h2 font-bold ${

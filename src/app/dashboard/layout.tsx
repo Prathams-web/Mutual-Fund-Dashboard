@@ -14,7 +14,7 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
         <Header />
 
         {/* Page Content */}
-        <main className="flex-1 p-6 overflow-y-auto bg-base">
+        <main className=" h-[calc(100vh-75px)] p-6 overflow-y-auto bg-base">
           {children}
         </main>
       </div>

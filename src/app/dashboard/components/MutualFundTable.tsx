@@ -1,10 +1,9 @@
 // MutualFundTable.tsx
 "use client";
 
-import React, { useMemo, useState } from "react";
-import { Dialog } from "@headlessui/react";
+import React, {  useState } from "react";
 import useFetchData from "@/hooks/useFetchData";
-import { Pagination, Table } from "antd";
+import {  Table } from "antd";
 import FundsFilter from "./FundsFilter";
 import { ColumnsType } from "antd/es/table";
 import FundsActions from "./FundsActions";
@@ -72,7 +71,7 @@ const MutualFundTable = () => {
       title: "Actions",
       key: "actions",
       render: (_, record) => (
-        <FundsActions fundId={record.id} fundName={record?.fundName!} />
+        <FundsActions  fundName={record.fundName} />
       ),
     },
   ];

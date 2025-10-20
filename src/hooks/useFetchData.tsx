@@ -1,6 +1,5 @@
-import axios, { AxiosHeaders } from "axios";
-import { useRouter } from "next/navigation";
-import React, { useEffect, useRef, useState } from "react";
+import axios from "axios";
+import { useEffect, useRef, useState } from "react";
 
 interface APIResponse {
   responseCode: number;
@@ -45,8 +44,6 @@ function useFetchData<T>({
   onSuccess,
   reqHeaders,
 }: useFetchDataProps<T>) {
-  const router = useRouter();
-
   const mainCaller = axios.create({
     headers: reqHeaders
       ? {
@@ -83,8 +80,7 @@ function useFetchData<T>({
         case 200:
           try {
             if (data.data && data.data.trim() != "" && !noParsing) {
-              let ParsedData: T | undefined;
-              ParsedData = JSON.parse(data.data!);
+              const ParsedData: T | undefined = JSON.parse(data.data!);
               setData(ParsedData);
               if (onSuccess) {
                 onSuccess(data, ParsedData);
@@ -94,8 +90,9 @@ function useFetchData<T>({
                 onSuccess(data);
               }
             }
-          } catch (error) {
-            setData(data?.data as T)
+          } catch (e) {
+            console.log(e);
+            setData(data?.data as T);
             onSuccess && onSuccess(data, data?.data as T);
           }
           break;
@@ -141,13 +138,13 @@ function useFetchData<T>({
       if (endPoint) {
         setData(undefined);
         (async () => {
-          const fetchData = await getDataFromEndpoint();
+          await getDataFromEndpoint();
         })();
         ref.current = true;
       }
       setHitAPI(false);
     }
-  }, [hitAPI, defaultAPICall]);
+  }, [hitAPI, defaultAPICall, endPoint, getDataFromEndpoint]);
   return {
     data: data,
     setData,
