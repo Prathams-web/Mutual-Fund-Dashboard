@@ -7,10 +7,10 @@ import {  Table } from "antd";
 import FundsFilter from "./FundsFilter";
 import { ColumnsType } from "antd/es/table";
 import FundsActions from "./FundsActions";
-import { Fund } from "@/app/api/funds/fundsData";
+import { Fund, funds } from "@/app/api/funds/fundsData";
 
 const MutualFundTable = () => {
-  const { data, loading } = useFetchData<Fund[]>({
+  const {  loading } = useFetchData<Fund[]>({
     // endPoint: "https://api.mfapi.in/mf",
     endPoint: "api/funds",
     defaultAPICall: true,
@@ -25,7 +25,7 @@ const MutualFundTable = () => {
   const [showHoldings, setShowHoldings] = useState(false);
   const [schemeType, setSchemeType] = useState("All");
 
-  const filteredFunds = data?.filter((f) => {
+  const filteredFunds = funds?.filter((f) => {
     const schemeMatch =
       schemeType === "All" ? true : f.schemeType.includes(schemeType);
     const holdingsMatch = showHoldings ? f?.isHolding : true;
