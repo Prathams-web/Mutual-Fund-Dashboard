@@ -2,9 +2,9 @@ export interface Fund {
   id: number;
   fundName: string;
   schemeType: string;
-  expenseRatio: string; // string to keep uniform formatting
-  aum: string; // with "Cr" suffix
-  oneYearReturn: string; // string for +/- formatting
+  expenseRatio: string;
+  aum: string;
+  oneYearReturn: string;
   isHolding: boolean;
 }
 
@@ -190,9 +190,6 @@ export const funds: Fund[] = [
     isHolding: true,
   },
 
-  // ];
-
-  // [
   {
     id: 100021,
     fundName: "HDFC Flexi Cap Fund",

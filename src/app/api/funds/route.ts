@@ -1,9 +1,8 @@
 // /app/api/funds/route.ts
 import { NextResponse } from "next/server";
-import { funds } from "./fundsData"; // import your data
+import { funds } from "./fundsData"; 
 
 export async function GET() {
-  // You can optionally implement query params for filtering later
   const response = {
     responseCode: 200,
     responseMessage: "Data Fetch Success",

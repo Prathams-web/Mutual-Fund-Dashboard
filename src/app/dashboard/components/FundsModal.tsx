@@ -9,19 +9,16 @@ interface FundsModalProps {
   fundName?: string;
 }
 
-// optional global suppression
-
 export default function FundsModal({
-    visible,
-    onClose,
-    actionType,
-    fundName,
+  visible,
+  onClose,
+  actionType,
+  fundName,
 }: FundsModalProps) {
-    const [messageApi, contextHolder] = message.useMessage();
+  const [messageApi, contextHolder] = message.useMessage();
   const [amount, setAmount] = useState("");
 
   const handleSubmit = () => {
-    // temporarily disable compatibility warnings
     console.warn = () => {};
     messageApi.success(`${actionType} successful for ${fundName}!`);
     setAmount("");
